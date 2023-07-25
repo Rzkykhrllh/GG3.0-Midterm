@@ -33,3 +33,4 @@ app.listen(port, () => {
 
 // Using Routes
 app.use("/api", AuthRoutes);
+app.use("/", VideoController);
