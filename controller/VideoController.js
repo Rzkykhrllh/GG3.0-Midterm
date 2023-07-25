@@ -19,4 +19,31 @@ const getAllVideo = (req, res, next) => {
     });
 };
 
-module.exports = { getAllVideo };
+// Post Video
+const addVideo = (req, res, next) => {
+  const { thumbnailUrl, title } = req.body;
+
+  const newVideo = new Video({
+    title: title,
+    thumbnailUrl: thumbnailUrl,
+  });
+
+  newVideo
+    .save()
+    .then((response) => {
+      res.status(200).json({
+        data: response,
+        message: "Sucessfully create a new video",
+        error: null,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        data: null,
+        message: "Failed to add video",
+        error: error,
+      });
+    });
+};
+
+module.exports = { getAllVideo, addVideo };
