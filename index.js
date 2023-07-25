@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 
+const AuthRoutes = require("./routers/auth");
+const VideoController = require("./routers/video");
+
 const mongoUrl = process.env.DATABASE_URL;
 const port = process.env.PORT;
 
@@ -27,3 +30,6 @@ app.use(bodyParser.json());
 app.listen(port, () => {
   console.log("Server is running");
 });
+
+// Using Routes
+app.use("/api", AuthRoutes);
