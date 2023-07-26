@@ -27,8 +27,6 @@ const addComment = (req, res, next) => {
   const { comment } = req.body;
   const { name: username, _id: userid } = req.userData;
 
-  console.log("ini data dari middleware", req.userData);
-
   const newComment = new Comment({
     userId: userid,
     username: username,

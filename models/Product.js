@@ -16,7 +16,10 @@ const productSchema = new Schema(
       type: Number,
     },
     videoId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+    },
+    productOwner: {
+      type: Schema.Types.ObjectId,
     },
   },
   { timestamps: true }

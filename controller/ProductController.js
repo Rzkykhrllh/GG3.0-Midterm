@@ -27,6 +27,7 @@ const addProduct = (req, res, next) => {
     link: link,
     stock: stock,
     videoId: videoId,
+    productOwner: req.userData._id,
   });
 
   newProduct
@@ -47,8 +48,8 @@ const addProduct = (req, res, next) => {
     });
 };
 
-const getProductByVideoId = async (req, res, next) => {
-  const { videoId } = req.query;
+const getProductByVideoId = (req, res, next) => {
+  const { id: videoId } = req.params;
 
   Product.find({ videoId: videoId })
     .then((response) => {
