@@ -47,4 +47,28 @@ const addProduct = (req, res, next) => {
     });
 };
 
-module.exports = { getAllProduct, addProduct };
+const getProductByVideoId = async (req, res, next) => {
+  const { videoId } = req.query;
+
+  Product.find({ videoId: videoId })
+    .then((response) => {
+      res.status(200).json({
+        data: response,
+        message: "Sucessfully to load product list",
+        error: null,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        data: null,
+        message: "Failed to load product by video id",
+        error: error,
+      });
+    });
+};
+
+module.exports = {
+  getAllProduct,
+  addProduct,
+  getProductByVideoId,
+};
