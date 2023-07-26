@@ -9,6 +9,9 @@ const videoSchema = new Schema(
     thumbnailUrl: {
       type: String,
     },
+    videoOwner: {
+      type: Schema.Types.ObjectId,
+    },
   },
   { timestamps: true }
 );
