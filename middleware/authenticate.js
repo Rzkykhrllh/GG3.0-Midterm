@@ -1,14 +1,14 @@
 const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
-const authenticate = (req, res, next) => {
-  console.log("first");
+const authenticate = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    const decode = jwt.verify(token, "verySecretValue");
+    const decode = await jwt.verify(token, process.env.SECRET_KEY);
 
-    console.log("second");
+    const userData = await User.findOne({ email: decode.name });
 
-    req.user = decode;
+    req.userData = userData;
 
     next();
   } catch (error) {

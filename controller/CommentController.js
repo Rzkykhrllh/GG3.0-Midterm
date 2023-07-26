@@ -24,10 +24,13 @@ const getComment = (req, res, next) => {
 // Post Comment
 const addComment = (req, res, next) => {
   const { id: videoId } = req.params;
-  const { userId, username, comment } = req.body;
+  const { comment } = req.body;
+  const { name: username, _id: userid } = req.userData;
+
+  console.log("ini data dari middleware", req.userData);
 
   const newComment = new Comment({
-    userId: userId,
+    userId: userid,
     username: username,
     comment: comment,
     videoId: videoId,
