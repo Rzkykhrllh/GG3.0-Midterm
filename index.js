@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const AuthRoutes = require("./routers/auth");
 const VideoController = require("./routers/video");
 const ProductController = require("./routers/product");
+const CommentController = require("./routers/Comment");
 
 const mongoUrl = process.env.DATABASE_URL;
 const port = process.env.PORT;
@@ -36,3 +37,4 @@ app.listen(port, () => {
 app.use("/api", AuthRoutes);
 app.use("/", VideoController);
 app.use("/product", ProductController);
+app.use("/comment", CommentController);
