@@ -88,7 +88,7 @@ If the login above process failed, the api will return an error message as `mess
 **api return** :
 ```json
 {
-    "data": [array of video or NULL]",
+    "data": "[array of video or NULL]",
     "message":"[either success or error message]",
     "error": "[NULL or error]",
 }
@@ -103,14 +103,14 @@ This api will return the all video from the database using the format above
 **req.body**:
 ```json
 {
-    "thumbnailUrl": [image link of the video thumbanil]",
+    "thumbnailUrl": "[image link of the video thumbanil]",
     "title":"[video title]",
 }
 ```
 **api return** :
 ```json
 {
-    "data": [a new created video object or NULL]",
+    "data": "[a new created video object or NULL]",
     "message":"[either success or error message]",
     "error": "[NULL or error]",
 }
@@ -131,7 +131,7 @@ The api will return your new video object or error message that follow above for
 **api return** :
 ```json
 {
-    "data": [an array of product or NULL]",
+    "data": "[an array of product or NULL]",
     "message":"[either success or error message]",
     "error": "[NULL or error]",
 }
@@ -153,7 +153,7 @@ This api will query all the video from the database.
 **api return** :
 ```json
 {
-    "data": [a new created video object or NULL]",
+    "data": "[a new created video object or NULL]",
     "message":"[either success or error message]",
     "error": "[NULL or error]",
 }
@@ -171,7 +171,7 @@ The api will return your new video object or error message that follow above for
 **api return** :
 ```json
 {
-    "data": [an array of product or NULL]",
+    "data": "[an array of product or NULL]",
     "message":"[either success or error message]",
     "error": "[NULL or error]",
 }
@@ -190,7 +190,7 @@ This api will query the video which have the specific video id from req.param.
 **api return** :
 ```json
 {
-    "data": [an array of product or NULL]",
+    "data": "[an array of product or NULL]",
     "message":"[either success or error message]",
     "error": "[NULL or error]",
 }
@@ -211,7 +211,7 @@ This api will query all the comment which have the specific video id from req.pa
 **api return** :
 ```json
 {
-    "data": [a new created video object or NULL]",
+    "data": "[a new created video object or NULL]",
     "message":"[either success or error message]",
     "error": "[NULL or error]",
 }
