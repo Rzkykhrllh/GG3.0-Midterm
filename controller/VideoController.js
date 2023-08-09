@@ -19,6 +19,26 @@ const getAllVideo = (req, res, next) => {
     });
 };
 
+const getVideo = (req, res, next) => {
+  const { id: videoId } = req.params;
+
+  Video.find({ _id: videoId })
+    .then((response) => {
+      res.status(200).json({
+        data: response,
+        message: "Sucessfully to load video list",
+        error: null,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        data: null,
+        message: "Failed to load data",
+        error: error,
+      });
+    });
+};
+
 // Post Video
 const addVideo = (req, res, next) => {
   const { thumbnailUrl, title } = req.body;
@@ -48,4 +68,4 @@ const addVideo = (req, res, next) => {
     });
 };
 
-module.exports = { getAllVideo, addVideo };
+module.exports = { getAllVideo, getVideo, addVideo };

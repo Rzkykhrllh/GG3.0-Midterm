@@ -23,7 +23,7 @@ const addProduct = (req, res, next) => {
 
   const newProduct = new Product({
     name: name,
-    proce: price,
+    price: price,
     link: link,
     stock: stock,
     videoId: videoId,
