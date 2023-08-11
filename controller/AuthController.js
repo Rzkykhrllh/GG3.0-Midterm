@@ -3,29 +3,73 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const register = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10, (error, hashedPasswrod) => {
-    if (error) {
-      res.json({ error: err });
-    }
+  console.log(req.body);
 
-    const newUser = new User({
-      name: req.body.name,
-      email: req.body.email,
-      phone: req.body.phone,
-      password: hashedPasswrod,
-    });
+  // Check if the email is already in use
+  User.findOne({ email: req.body.email })
+    .then((existingEmailUser) => {
+      if (existingEmailUser) {
+        console.log("email udah kepake sih bang");
+        return res.status(400).json({ message: "Email already in use" });
+      }
 
-    newUser
-      .save()
-      .then(
-        res.json({
-          message: "User successfully Added",
+      console.log("1");
+
+      // Check if the phone number is already in use
+      User.findOne({ phone: req.body.phone })
+        .then((existingPhoneUser) => {
+          if (existingPhoneUser) {
+            console.log("nomor telpon udah kepake sih bang");
+            return res
+              .status(400)
+              .json({ message: "Phone number already in use" });
+          }
+
+          console.log("2");
+
+          console.log(req.body);
+
+          bcrypt.hash(req.body.password, 10, (error, hashedPassword) => {
+            if (error) {
+              console.log("2 tapi error");
+              return res.status(500).json({ error: error });
+            }
+
+            const newUser = new User({
+              name: req.body.name,
+              email: req.body.email,
+              phone: req.body.phone,
+              password: hashedPassword,
+            });
+
+            console.log(3);
+
+            newUser
+              .save()
+              .then(() => {
+                console.log(4);
+                res.status(201).json({
+                  message: "User successfully added",
+                });
+              })
+              .catch((error) => {
+                res
+                  .status(500)
+                  .json({ message: `User unsuccessfully added ${error}` });
+              });
+          });
         })
-      )
-      .catch((error) => {
-        res.json({ message: `User unsuccessfully added ${error}` });
-      });
-  });
+        .catch((error) => {
+          console.log("4 tapi error");
+          res
+            .status(500)
+            .json({ message: `Error checking phone number ${error}` });
+        });
+    })
+    .catch((error) => {
+      console.log("error di email bang");
+      res.status(500).json({ message: `Error checking email ${error}` });
+    });
 };
 
 const login = (req, res, next) => {

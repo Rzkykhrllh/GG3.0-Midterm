@@ -26,10 +26,19 @@ mongoose
 
 const app = express();
 
-app.use(cors());
+// Cors
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Set the allowed origin
+    credentials: true, // Allow credentials (cookies, etc.)
+  })
+);
+
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(express.json());
 
 app.listen(port, () => {
   console.log("Server is running");
