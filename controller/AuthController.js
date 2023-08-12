@@ -71,7 +71,7 @@ const login = (req, res, next) => {
 
         if (result) {
           const token = jwt.sign({ name: email }, process.env.SECRET_KEY, {
-            expiresIn: "30s",
+            expiresIn: "2h",
           });
 
           const refreshToken = jwt.sign(
