@@ -18,6 +18,9 @@ const productSchema = new Schema(
     videoId: {
       type: Schema.Types.ObjectId,
     },
+    thumbnailUrl: {
+      type: String,
+    },
     productOwner: {
       type: Schema.Types.ObjectId,
     },

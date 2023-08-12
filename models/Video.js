@@ -12,6 +12,9 @@ const videoSchema = new Schema(
     videoOwner: {
       type: Schema.Types.ObjectId,
     },
+    videoUrl: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

@@ -19,7 +19,7 @@ const getAllProduct = (req, res, next) => {
 };
 
 const addProduct = (req, res, next) => {
-  const { name, price, link, stock, videoId } = req.body;
+  const { name, price, link, stock, videoId, thumbnailUrl } = req.body;
 
   const newProduct = new Product({
     name: name,
@@ -27,6 +27,7 @@ const addProduct = (req, res, next) => {
     link: link,
     stock: stock,
     videoId: videoId,
+    thumbnailUrl: thumbnailUrl,
     productOwner: req.userData._id,
   });
 

@@ -41,13 +41,14 @@ const getVideo = (req, res, next) => {
 
 // Post Video
 const addVideo = (req, res, next) => {
-  const { thumbnailUrl, title } = req.body;
+  const { thumbnailUrl, title, videoUrl } = req.body;
   const { _id: userId } = req.userData;
 
   const newVideo = new Video({
     title: title,
     thumbnailUrl: thumbnailUrl,
     videoOwner: userId,
+    videoUrl: videoUrl,
   });
 
   newVideo
