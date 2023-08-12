@@ -45,7 +45,8 @@ const addComment = (req, res, next) => {
       });
     })
     .catch((error) => {
-      res.json({
+      // ini status code masih ngaco
+      res.status(402).json({
         data: null,
         message: "Failed to Comment on Video",
         error: error,

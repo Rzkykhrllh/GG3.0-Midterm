@@ -22,13 +22,14 @@ const authenticate = async (req, res, next) => {
         message: `Token Expired`,
       });
     } else if (error.message == "You are not logged in") {
-      res.json({
+      res.status(401).json({
         message: "You are not logged in, please login to access this feature",
       });
+    } else {
+      res.status(401).json({
+        message: `Failed to authenticate ${error}`,
+      });
     }
-    res.json({
-      message: `Failed to authenticate ${error}`,
-    });
   }
 };
 
