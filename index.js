@@ -29,7 +29,7 @@ const app = express();
 // Cors
 app.use(
   cors({
-    origin: "http://localhost:3000", // Set the allowed origin
+    origin: ["http://localhost:3000", "https://gg-3-0-finalterm-fe.vercel.app"], // Set the allowed origin
     credentials: true, // Allow credentials (cookies, etc.)
   })
 );
